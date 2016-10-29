@@ -1,0 +1,19 @@
+{
+  "name": "friendmatch",
+  "version": "1.0.0",
+  "description": "dependicies for friendfinder app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mlin2814/friendmatch.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mlin2814/friendmatch/issues"
+  },
+  "homepage": "https://github.com/mlin2814/friendmatch#readme"
+}
