@@ -89,7 +89,7 @@
                                 </select>
                             
                             <h3>Question 5</h3>
-                                <h4>Ending this survey must be the most relaxing thing next to feeling like this wasn't a waste of time</h4>
+                                <h4>Ron Paul is adfjg;ioadg backwards</h4>
                                 <select data-placeholder class="chosen-select" id="q5">
                                     <option value></option>
                                     <option value="1">1 (Strongly Disagree)</option>
@@ -98,7 +98,63 @@
                                     <option value="4">4</option>
                                     <option value="5">5 (Strongly Agree)</option>
                                 </select>
-                            
+
+                            <h3>Question 6</h3>
+                                <h4>You know?</h4>
+                                <select data-placeholder class="chosen-select" id="q6">
+                                    <option value></option>
+                                    <option value="1">1 (Strongly Disagree)</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5 (Strongly Agree)</option>
+                                </select>
+
+                                <h3>Question 7</h3>
+                                <h4>Sewing kits should include a bear</h4>
+                                <select data-placeholder class="chosen-select" id="q7">
+                                    <option value></option>
+                                    <option value="1">1 (Strongly Disagree)</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5 (Strongly Agree)</option>
+                                </select>
+
+                                <h3>Question 8</h3>
+                                <h4>Life is run by glue and hammers</h4>
+                                <select data-placeholder class="chosen-select" id="q8">
+                                    <option value></option>
+                                    <option value="1">1 (Strongly Disagree)</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5 (Strongly Agree)</option>
+                                </select>
+
+                                <h3>Question 9</h3>
+                                <h4>You should take a break to compose yourself before answering the last question: walk around, stretch, drink water, get a snack</h4>
+                                <select data-placeholder class="chosen-select" id="q9">
+                                    <option value></option>
+                                    <option value="1">1 (Strongly Disagree)</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5 (Strongly Agree)</option>
+                                </select>
+
+                            <h3>Question 10</h3>
+                                <h4>Ending this survey must be the most relaxing thing next to feeling like this wasn't a waste of time</h4>
+                                <select data-placeholder class="chosen-select" id="q10">
+                                    <option value></option>
+                                    <option value="1">1 (Strongly Disagree)</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5 (Strongly Agree)</option>
+                                </select>
+                            <br>
+                            <br>
                             <button type="submit" class="btn btn-primary submit">Submit yourself to us!</button>
                         </form>
 
@@ -114,8 +170,47 @@
             <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/mlin2814/friendmatch">GitHub Repo</a></p> 
         </div>
     </footer>
-
     </div>
+
+    <div id="resultsModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h2 class="modal-title text-center"><strong>Your new companion in this chaotic abyss is named:</strong></h2>
+                </div>
+                <div class="modal-body">
+                    <h2 class="text-center" id="matchName"></h2>
+                    <img class="center-block" id="matchImg" src="" alt="">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Get it away!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+            $("#submit").on("click", function(){
+            var playerInfo = {
+                name: $('#name').val().trim(),
+                photo: $('#photo').val().trim(),
+                scores: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val()]                
+            };    
+        console.log(playerInfo);
+
+        var currentURL = window.location.origin;
+
+        $.post(currentURL + "/api/friends", playerInfo, function(data){
+            $("#matchName").text(data.name);
+            $("#matchphoto").attr("src", data.photo);
+            $("#resultsModal").modal('toggle');
+        });
+    
+return false;
+});
+    </script>
+
 
 </body>
 </html>
