@@ -54,10 +54,10 @@ return false;
 
 var player1 = ["0", "0", "0", "0", "0"];
 var player2 = ["0", "0", "0", "0", "0"];
-var compare = ["0", "0", "0", "0", "0"];
+var compare = 0;
 
 for (var i = 0; i < compare.length; i++){
-    player1 - player2
+    compare += Math.abs(player1[i] - player2[i]);
 }
 
 function(){
